@@ -1,0 +1,16 @@
+{
+  "name": "good-password",
+  "version": "1.0.0",
+  "description": "Check user passwords against a list of the most common passwords dynamically.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "keywords": [
+    "password",
+    "test",
+    "bloom"
+  ],
+  "author": "Hampus Nilsson",
+  "license": "MIT"
+}
