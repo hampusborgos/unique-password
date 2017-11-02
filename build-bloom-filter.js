@@ -19,8 +19,8 @@ console.log(`Building ${targetSizeInKb} kb large judy array containing all passw
 
 function bloomFilterGetBit(array, index) {
   index = index >>> 0
-  let byte = array[index / 8]
-  return (byte & (1 << index % 8)) != 0
+  let byte = array[Math.floor(index / 8)]
+  return (byte & (1 << (index % 8))) != 0
 }
 
 function bloomFilterSetBit(array, index) {
@@ -76,9 +76,28 @@ lineReader.on('close', function (line) {
   out.write(Buffer.from(bloomFilterArray));
   out.close();
   console.log("Saved to " + outPath)
+
+  testPassword('hejsan')
+  testPassword('123456')
+  testPassword('laxpasta')
+  testPassword('hunter2')
+  testPassword('sword1')
+  testPassword('cool22')
 })
 
 lineReader.on('line', function (line) {
   passwordCount ++;
   bloomFilterAddString(bloomFilterArray, line)
 })
+
+
+function testPassword(password) {
+  var contains = bloomFilterContainsString(bloomFilterArray, password);
+
+  if (contains) {
+    console.log(`BAD PASSWORD ${password}`)
+  }
+  else {
+    console.log(`GOOD PASSWORD ${password}`)
+  }
+}

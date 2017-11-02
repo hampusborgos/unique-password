@@ -1,11 +1,13 @@
 {
-  "name": "good-password",
-  "version": "1.0.0",
+  "name": "unique-password",
+  "version": "0.1.0",
   "description": "Check user passwords against a list of the most common passwords dynamically.",
   "main": "index.js",
   "scripts": {
     "test": "mocha test",
-    "build-judy-array": ""
+    "serve": "",
+    "build": "",
+    "build-bloom-filter": ""
   },
   "keywords": [
     "password",
